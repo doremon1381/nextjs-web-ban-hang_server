@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NhanViet.Api/NhanViet.Api.csproj" />
+    <Project Path="src/NhanViet.Application/NhanViet.Application.csproj" />
+    <Project Path="src/NhanViet.Domain/NhanViet.Domain.csproj" />
+    <Project Path="src/NhanViet.Infrastructure/NhanViet.Infrastructure.csproj" />
+  </Folder>
+</Solution>

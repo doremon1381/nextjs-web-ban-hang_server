@@ -1,0 +1,83 @@
+## Build outputs
+bin/
+obj/
+out/
+
+## Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docobj
+*.vcxproj.filters
+*.VC.db
+*.VC.opendb
+*.pidb
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+## JetBrains Rider
+.idea/
+*.sln.iml
+
+## ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!**/packages/build/
+nuget.config
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## dotnet publish
+publish/
+*.publish.xml
+
+## Test results
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+coverage*/
+coverage-report/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Secrets and config overrides
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json
+secrets.json
+.env
+.env.*
+*.pfx
+*.p12
+
+## Logs
+*.log
+logs/
+Logs/
+
+## OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+## Temporary files
+*.tmp
+*.temp
+~$*
+*.swp
+*.bak
