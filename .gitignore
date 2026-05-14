@@ -83,3 +83,4 @@ Desktop.ini
 *.bak
 .mcp.json
 .claude/settings.local.json
+skills-lock.json
