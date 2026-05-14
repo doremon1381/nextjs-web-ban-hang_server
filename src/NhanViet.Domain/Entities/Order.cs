@@ -14,6 +14,7 @@ public class Order
     public decimal ShippingFee { get; private set; }
     public decimal Total { get; private set; }
     public PaymentMethod PaymentMethod { get; private set; }
+    public PaymentStatus PaymentStatus { get; private set; } = PaymentStatus.Unpaid;
     public string? Note { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
@@ -44,6 +45,7 @@ public class Order
             ShippingFee = shippingFee,
             Total = cart.Subtotal + shippingFee,
             PaymentMethod = paymentMethod,
+            PaymentStatus = PaymentStatus.Unpaid,
             Note = note,
             CustomerName = customerName,
             CustomerPhone = customerPhone,
@@ -85,6 +87,13 @@ public class Order
         if (Status != OrderStatus.Shipping)
             throw new InvalidOrderStateException(Id, Status, OrderStatus.Completed);
         TransitionTo(OrderStatus.Completed);
+    }
+
+    public void MarkAsPaid()
+    {
+        if (PaymentStatus == PaymentStatus.Paid) return;
+        PaymentStatus = PaymentStatus.Paid;
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public void Cancel(string? reason = null)

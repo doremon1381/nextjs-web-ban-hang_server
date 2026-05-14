@@ -21,6 +21,11 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(o => o.Note).HasMaxLength(500);
         builder.Property(o => o.Status).HasConversion<string>().HasMaxLength(20);
         builder.Property(o => o.PaymentMethod).HasConversion<string>().HasMaxLength(20);
+        builder.Property(o => o.PaymentStatus)
+            .HasConversion<string>()
+            .HasMaxLength(20)
+            .HasDefaultValueSql("'Unpaid'");
+        builder.HasIndex(o => new { o.Status, o.PaymentStatus });
         builder.Property(o => o.Subtotal).HasPrecision(18, 0);
         builder.Property(o => o.ShippingFee).HasPrecision(18, 0);
         builder.Property(o => o.Total).HasPrecision(18, 0);

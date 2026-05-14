@@ -47,7 +47,8 @@ public class ListAllOrdersHandler(
     {
         if (!currentUser.IsAdmin) throw new UnauthorizedAccessException();
 
-        var (items, total) = await orders.ListAllAsync(req.Status, req.Page, req.PageSize, ct);
+        var (items, total) = await orders.ListAllAsync(
+            new AdminOrderFilter(Status: req.Status, Page: req.Page, PageSize: req.PageSize), ct);
         return new PagedResult<OrderDto>(
             items.Select(o => o.ToDto()).ToList(),
             total, req.Page, req.PageSize

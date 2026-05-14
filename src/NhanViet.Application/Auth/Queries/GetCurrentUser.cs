@@ -11,6 +11,8 @@ public interface IAppUserRepository
 {
     Task<Domain.Entities.AppUser?> GetByIdAsync(Guid id, CancellationToken ct = default);
     Task<Domain.Entities.AppUser?> GetByEmailAsync(string email, CancellationToken ct = default);
+    Task<(List<Domain.Entities.AppUser> Items, int TotalCount)> ListAsync(
+        string? search, int page, int pageSize, CancellationToken ct = default);
     Task AddAsync(Domain.Entities.AppUser user, CancellationToken ct = default);
     void Update(Domain.Entities.AppUser user);
     void Delete(Domain.Entities.AppUser user);

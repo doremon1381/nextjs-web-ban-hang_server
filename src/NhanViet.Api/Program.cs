@@ -54,7 +54,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(CreateOrderCommand).Assembly));
 builder.Services.AddValidatorsFromAssembly(typeof(CreateOrderCommand).Assembly);
-builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+// for any TRequest, TResponse
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>)); 
 
 // --- Infrastructure ---
 builder.Services.AddInfrastructure(builder.Configuration);

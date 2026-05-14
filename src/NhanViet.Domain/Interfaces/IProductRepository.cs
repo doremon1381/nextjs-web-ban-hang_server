@@ -18,6 +18,7 @@ public record ProductFilter(
     ProductCategory? Category = null,
     bool? Featured = null,
     string? Search = null,
+    bool? IsActive = true,
     int Page = 1,
     int PageSize = 12
 );

@@ -18,8 +18,10 @@ public class ProductRepository(NhanVietDbContext db) : IProductRepository
     {
         var query = db.Products
             .Include(p => p.Variants.Where(v => v.IsActive))
-            .Where(p => p.IsActive)
             .AsQueryable();
+
+        if (filter.IsActive.HasValue)
+            query = query.Where(p => p.IsActive == filter.IsActive.Value);
 
         if (filter.Category.HasValue)
             query = query.Where(p => p.Category == filter.Category.Value);

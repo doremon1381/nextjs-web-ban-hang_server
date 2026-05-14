@@ -19,7 +19,7 @@ public class ListProductsHandler(IProductRepository products)
 {
     public async Task<PagedResult<ProductDto>> Handle(ListProductsQuery req, CancellationToken ct)
     {
-        var filter = new ProductFilter(req.Category, req.Featured, req.Search, req.Page, req.PageSize);
+        var filter = new ProductFilter(req.Category, req.Featured, req.Search, Page: req.Page, PageSize: req.PageSize);
         var (items, total) = await products.ListAsync(filter, ct);
         return new PagedResult<ProductDto>(
             items.Select(p => p.ToDto()).ToList(),
