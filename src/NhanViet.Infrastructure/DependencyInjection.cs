@@ -18,7 +18,9 @@ public static class DependencyInjection
         this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<NhanVietDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("SupabaseDirectConnection")));
+            options.UseNpgsql(
+                configuration.GetConnectionString("SupabaseDirectConnection"),
+                npgsql => npgsql.MigrationsAssembly("NhanViet.Infrastructure")));
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<NhanVietDbContext>());
 
