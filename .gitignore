@@ -81,3 +81,5 @@ Desktop.ini
 ~$*
 *.swp
 *.bak
+.mcp.json
+.claude/settings.local.json
