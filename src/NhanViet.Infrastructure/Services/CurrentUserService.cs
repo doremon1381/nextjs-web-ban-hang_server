@@ -17,5 +17,9 @@ public class CurrentUserService(IHttpContextAccessor httpContextAccessor) : ICur
 
     public string? AuthProvider => User?.FindFirst("provider")?.Value;
 
+    // `role` is projected ONLY from app_metadata (service-role-writable) by the
+    // JWT pipeline in Program.cs. user_metadata is namespaced under "umeta:" and
+    // is NOT considered for authorization. The /admin/** routes additionally
+    // cross-check against public.app_users.Role via DbRoleAuthorizationHandler.
     public bool IsAdmin => User?.FindFirst("role")?.Value == "Admin";
 }

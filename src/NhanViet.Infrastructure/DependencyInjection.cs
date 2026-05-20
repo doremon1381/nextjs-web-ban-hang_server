@@ -31,6 +31,7 @@ public static class DependencyInjection
         services.AddScoped<IContactRepository, ContactRepository>();
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddSingleton<IGuestSessionTokenService, GuestSessionTokenService>();
         services.AddScoped<IShippingCalculator, ShippingCalculator>();
         services.AddScoped<IEmailSender, SmtpEmailSender>();
         services.AddScoped<IIdempotencyStore, IdempotencyStore>();
